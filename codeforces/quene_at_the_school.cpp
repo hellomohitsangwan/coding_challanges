@@ -37,8 +37,27 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+
 void solve() {
+    int n , t; cin>>n>>t;
+    vector<char> v;
+    for(int i = 0 ; i < n ; i++) {
+        char x; cin>>x;
+        v.push_back(x);
+    }
     
+    while (t--)
+    {
+        for(int i = 0 ; i < n-1 ; i++) {
+            if(v[i] == 'B' && v[i+1] == 'G') {
+                swap(v[i], v[i+1]);
+                i++;
+            }
+        }
+    }
+    for(int i = 0 ; i < n ; i++) {
+        cout<<v[i];
+    }
 }
 int main()  {
     solve();
