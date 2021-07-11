@@ -33,3 +33,27 @@
 // output
 // 1
 
+#include <bits/stdc++.h>
+using namespace std;
+void solve() {
+
+    int x1 = 0 , y1 = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        for(int j = 0; j < 5 ; j++) {
+            int x; cin>>x;
+            if(x == 1) {
+                x1 = i+1;
+                y1 = j+1;
+                break;
+            }
+         }
+    }
+    int swap = 0;
+    x1 = (3-x1 < 0) ? -(3-x1) : 3-x1;
+    y1 = (3-y1 < 0) ? -(3-y1) : 3-y1;
+    cout<<x1+y1;
+}
+int main()  {
+    solve();
+}
