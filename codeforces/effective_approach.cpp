@@ -53,26 +53,60 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-void solve() {
+// void solve() {
+//     int n;cin>>n;
+//     vector<int> v;
+//     for(int i = 0 ; i < n ; i++) {
+//         int x; cin>>x;
+//         v.push_back(x);
+//     }
+//     int q; cin>>q;
+//     int vs = 0 , ps = 0;
+//     while(q--) {
+//         int y; cin>>y;
+//         // auto it = find(v.begin(), v.end(),y);
+//         int index = 0;
+//         for(int i = 0 ; i < v.size() ; i++) {
+//             if(y == v[i]) {
+//                 index = i+1;
+//                 break;
+//             }
+//         }
+        
+//         // int index = (it - v.begin());
+ 
+//         vs += index + 1;
+//         ps += (v.size() - index) ;
+//     }
+//     cout<<vs<<" "<<ps;
+    
+// }
+void solve_fast() {
     int n;cin>>n;
-    vector<int> v;
+    int a[int(1e5 + 3)];
     for(int i = 0 ; i < n ; i++) {
+        //storing the index of element of the value inserted and at the value inserted
         int x; cin>>x;
-        v.push_back(x);
+        a[x] = i+1;
     }
+    
     int q; cin>>q;
-    int vs = 0 , ps = 0;
+    long long vs = 0 , ps = 0;
     while(q--) {
         int y; cin>>y;
-        auto it = find(v.begin(), v.end(),y);
-        int index = (it - v.begin());
-
-        vs += index + 1;
-        ps += (v.size() - index) ;
+ 
+        vs += a[y];
+        ps += (n - a[y] + 1) ;
     }
     cout<<vs<<" "<<ps;
-    
 }
 int main()  {
-    solve();
+    auto start = chrono::high_resolution_clock::now();
+    // my code here
+    solve_fast();
+    // Code for timer
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+    cerr <<"total time --> " << duration.count() / 1000.0 << " ms";
+    return 0;
 }
